@@ -15,12 +15,12 @@ var burger = {
         orm.insertOne("burgers", colsVols, function(res) {
             callback(res);
         });
-    ),
+    },
     update: function(colsVols, qualifiers, callback) {
         orm.updateOne("burgers", colsVols, qualifiers, function(res) {
             callback(res);
         });
-    ),
+    },
 };
 
 module.exports = burger;
