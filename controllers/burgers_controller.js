@@ -12,16 +12,39 @@ var burger = require("../models/burger.js");
 
 // Renders the main web page with list
 router.get("/", function(req, res) {
-    console.log("Hitting get");
+    burger.all(function (result) {
+        //console.log(result);
+        res.render("index", { burgers: result });
+    });
 });
 
 //
 router.post("/api/burgers", function(req, res) {
-    console.log("Hitting post");
+    burger.create({
+        burger_name: req.body.burger_name,
+        //devoured: req.body.devoured
+    }, function (result) {
+        //console.log(result);
+        // Send back the ID of the new burgers
+        res.json({ id: result.insertId });
+    }
 });
 
-router.put("/api/burgers/:burger", function(req, res) {
-    console.log("Hitting put");
+router.put("/api/burgers/:id", function(req, res) {
+    burger.update({
+        //burger_name: req.body.burger_name,
+        devoured: req.body.devoured
+    }, {
+        id: req.params.id
+    }, function (result) {
+        //console.log(result);
+        if (result.affectedRows == 0) {
+            // supplied ID doesn't exist.
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
 });
 
 // Export routes for server.js to use.
