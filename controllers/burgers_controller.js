@@ -11,7 +11,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Renders the main web page with list
-router.get("/", function(req, res) {
+router.get("/index", function(req, res) {
     burger.all(function (result) {
         //console.log(result);
         res.render("index", { burgers: result });
@@ -21,13 +21,12 @@ router.get("/", function(req, res) {
 //
 router.post("/api/burgers", function(req, res) {
     burger.create({
-        burger_name: req.body.burger_name,
+        burger_name: req.body.burger_name
         //devoured: req.body.devoured
     }, function (result) {
-        //console.log(result);
         // Send back the ID of the new burgers
         res.json({ id: result.insertId });
-    }
+    });
 });
 
 router.put("/api/burgers/:id", function(req, res) {
