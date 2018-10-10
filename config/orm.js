@@ -10,32 +10,32 @@ updateOne()
 var connection = require("./connection.js");
 
 var selectAll = function(table, callback) {
-    var query = `SELECT * FROM ?`;
+    var query = 'SELECT * FROM ??';    // ?? for table and column names
     connection.query(query, [table], function(err, result) {
         if (err) {
             throw err;
         }
-        calback(result);
+        callback(result);
     });
 };
 
 var insertOne = function(table, setColsVols, callback) {
-    var query = "INSERT INTO ? SET ?";
+    var query = "INSERT INTO ?? SET ?";
     connection.query(query, [table, setColsVols], function(err, result) {
         if (err) {
             throw err;
         }
-        calback(result);
+        callback(result);
     });
 };
 
 var updateOne = function(table, setColsVols, qualifiers, callback) {
-    var query = "UPDATE ? SET ? WHERE ?"
+    var query = "UPDATE ?? SET ? WHERE ?"
     connection.query(query, [table, setColsVols, qualifiers], function(err, result) {
         if (err) {
             throw err;
         }
-        calback(result);
+        callback(result);
     });
 }
 
