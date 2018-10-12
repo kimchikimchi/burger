@@ -2,6 +2,9 @@
 Setup the index.handlebars to have the template that Handlebars can render onto.
 
 Create a button in index.handlebars that will submit the user input into the database.
+
+REF: Borrowing some of old homework for button elements generation and event handling
+seen in github.com:kimchikimchi/giphy-api.git
 -->
 
 
@@ -9,20 +12,24 @@ Create a button in index.handlebars that will submit the user input into the dat
 
 <h2>Burgers ready to be eaten</h2>
 
-<ul>
+<ul id="uneatenBurgers">
     {{#each burgers}}
         {{#unless devoured}}
-            <p>{{burger_name}}</p>
+            <!-- Todo: Put ID and burger description here -->
+            <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" class="btn btn-secondary" data-id="{{id}}">Eat {{id}} - {{burger_name}}</button>
+            </div>
+            <br>
         {{/unless}}
     {{/each}}
 </ul>
 
 <h2>Burgers Eaten</h2>
 
-<ul>
+<ul id="eatenBurgers">
     {{#each burgers}}
         {{#if devoured}}
-            <p>{{burger_name}}</p>
+            <p>{{id}} - {{burger_name}}</p>
         {{/if}}
     {{/each}}
 </ul>
