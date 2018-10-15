@@ -1,6 +1,6 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready( function() {
-    $(".create-form").on("submit", function(event) {
+    $(".form-inline").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
 
@@ -18,7 +18,7 @@ $(document).ready( function() {
     });
 
     // Using event delegation since ".btn" can be created after page rendering.
-    $("#uneatenBurgers").on("click", ".btn", function(event) {
+    $("#uneatenBurgers").on("click", ".eat-burger", function(event) {
         var id = $(this).data("id");
         console.log("updating devoured status for id " + id);
 

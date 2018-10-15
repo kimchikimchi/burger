@@ -7,38 +7,41 @@ REF: Borrowing some of old homework for button elements generation and event han
 seen in github.com:kimchikimchi/giphy-api.git
 -->
 
+<div class="jumbotron">
+    <h1 class="display-4">Burger-Burger</h1>
+</div>
 
-<h1>Burger-Burger</h1>
-
-<h2>Burgers ready to be eaten</h2>
-
-<ul id="uneatenBurgers">
+<h2><span class="badge badge-secondary">Burgers ready to be eaten</span></h2>
+<ul id="uneatenBurgers" class="list-group">
     {{#each burgers}}
         {{#unless devoured}}
-            <!-- Todo: Put ID and burger description here -->
-            {{id}} - {{burger_name}} <button type="button" class="btn btn-primary" data-id="{{id}}">Eat this</button>
-            <br>
+            <li><a herf="#" class="eat-burger list-group-item list-group-item-action" data-id="{{id}}">
+                Click to Eat {{id}} - {{burger_name}}
+            </a></li>
         {{/unless}}
     {{/each}}
 </ul>
 
-<h2>Burgers Eaten</h2>
 
-<ul id="eatenBurgers">
+<h2><span class="badge badge-secondary">Burgers Eaten</span></h2>
+<ul id="eatenBurgers" class="list-group">
     {{#each burgers}}
         {{#if devoured}}
-            <p>{{id}} - {{burger_name}}</p>
+            <li><a herf="#" class="list-group-item list-group-item-action" data-id="{{id}}">
+                {{id}} - {{burger_name}}
+            </a></li>
         {{/if}}
     {{/each}}
 </ul>
 
-<h2>Add a burger</h2>
-<form class="create-form">
 
-    <div class="form-group">
-        <label for="burger">Burger Name:</label>
-        <input type="text" id="burger" name="name">
+<h2><span class="badge badge-secondary">Add New Burger</span></h2>
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" readonly class="form-control-plaintext" value="Burger Name: ">
     </div>
-
-    <button type="submit">Add Burger</button>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="burger" placeholder="name">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Add Burger</button>
 </form>
