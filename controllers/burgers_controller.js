@@ -31,8 +31,8 @@ router.post("/api/burgers", function(req, res) {
 
 router.put("/api/burgers/:id", function(req, res) {
     burger.update({
-        //burger_name: req.body.burger_name,
-        devoured: req.body.devoured
+        // Convertin string to boolean
+        devoured: (req.body.devoured == 'true')
     }, {
         id: req.params.id
     }, function (result) {

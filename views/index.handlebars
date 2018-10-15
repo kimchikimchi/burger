@@ -16,9 +16,7 @@ seen in github.com:kimchikimchi/giphy-api.git
     {{#each burgers}}
         {{#unless devoured}}
             <!-- Todo: Put ID and burger description here -->
-            <div class="btn-group" role="group" aria-label="First group">
-                <button type="button" class="btn btn-secondary" data-id="{{id}}">Eat {{id}} - {{burger_name}}</button>
-            </div>
+            {{id}} - {{burger_name}} <button type="button" class="btn btn-primary" data-id="{{id}}">Eat this</button>
             <br>
         {{/unless}}
     {{/each}}
