@@ -11,7 +11,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Renders the main web page with list
-router.get("/index", function(req, res) {
+router.get("/", function(req, res) {
     burger.all(function (result) {
         //console.log(result);
         res.render("index", { burgers: result });
