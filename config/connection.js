@@ -3,10 +3,10 @@ Inside the connection.js file, setup the code to connect Node to MySQL.
 Export the connection.
 */
 var mysql = require("mysql");
-var connection
+var connection;
 
 if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_UR);
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
     connection = mysql.createConnection({
         host: "localhost",
@@ -15,7 +15,7 @@ if (process.env.JAWSDB_URL) {
         password: "root",
         database: "burgers_db"
     });
-};
+}
 
 // Make connection.
 connection.connect(function(err) {
